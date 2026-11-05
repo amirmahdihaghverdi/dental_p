@@ -1,0 +1,201 @@
+name: MOPG-7
+full_name: MOPG-7 — A Multi-Clinic Dental Panoramic Radiograph Dataset with Expert YOLO Labels
+version: "v4.0"
+release_date: "2026"
+description: >
+  MOPG-7 is a publicly available multi-clinic dataset containing 2,095 fully
+  anonymized dental panoramic radiographs (Orthopantomograms, OPGs) with
+  expert-annotated YOLO and COCO-format bounding-box labels for seven
+  clinically relevant dental conditions. The database was retrospectively
+  collected from four independent dental centers in Bangladesh, providing
+  diversity in patient demographics, imaging devices, and clinical cases.
+
+license:
+  name: Creative Commons Attribution 4.0 International (CC BY 4.0)
+  url: https://creativecommons.org/licenses/by/4.0/
+  spdx_id: CC-BY-4.0
+  full_text_file: LICENSE
+
+authors:
+  - name: "Faiza Feroz"
+    affiliation: "Daffodil International University"
+    orcid: ""
+    email: "faiferoz12@gmail.com"
+    corresponding_author: true
+  - name: "Md. Taufiq Hasan"
+    affiliation: ""
+    orcid: ""
+    email: ""
+  - name: "Eyevi Talukder Samapti"
+    affiliation: ""
+    orcid: ""
+    email: ""
+  - name: "Md. Tanvir Hasan"
+    affiliation: ""
+    orcid: ""
+    email: ""
+  - name: "Shuvo Singh Partho"
+    affiliation: ""
+    orcid: ""
+    email: ""
+  - name: "Dr. Zinia Talukder"
+    affiliation: ""
+    orcid: ""
+    email: ""
+  - name: "Dr. Afrina Chowdhury"
+    affiliation: ""
+    orcid: ""
+    email: ""
+  - name: "Md Zahid Hasan"
+    affiliation: ""
+    orcid: ""
+    email: ""
+  - name: "Md Hasan Imam Bijoy"
+    affiliation: ""
+    orcid: ""
+    email: ""
+  - name: "Md Abdus Samad"
+    affiliation: ""
+    orcid: ""
+    email: ""
+
+data_collection_centers:
+  - name: "Sonia Nursing Home"
+    location: "Tangail, Bangladesh"
+    image_prefix: "0000XXXX"
+    num_radiographs: 1433
+  - name: "Ibn Sina D. Lab & Consultation Center"
+    location: "Dayaganj, Dhaka, Bangladesh"
+    image_prefix: "ibnXXX"
+    num_radiographs: 533
+  - name: "Niramoy Diagnostic Center"
+    location: "Tangail, Bangladesh"
+    image_prefix: "nirXXX"
+    num_radiographs: 114
+  - name: "Health City Diagnostic Center"
+    location: "Gaibandha, Bangladesh"
+    image_prefix: "hXXX"
+    num_radiographs: 15
+
+funding: ""
+acknowledgements: >
+  We sincerely thank the participating dental centers for their support in
+  providing anonymized panoramic radiographs used to develop the MOPG-7
+  dataset. Their contribution has enabled the creation of a diverse benchmark
+  for dental object detection and computer-aided diagnosis research.
+
+dataset_doi: ""
+paper_doi: ""
+repository_url: ""
+
+data_scope:
+  total_images: 2095
+  total_annotations: 9834
+  splits:
+    train:
+      images: 1676
+      annotations: 7823
+      percentage: "~80%"
+    val:
+      images: 209
+      annotations: 923
+      percentage: "~10%"
+    test:
+      images: 210
+      annotations: 1088
+      percentage: "~10%"
+  image_resolution_range:
+    width_min: 454
+    width_max: 2876
+    height_min: 224
+    height_max: 1646
+  annotation_tool: "LabelImg"
+
+class_definitions:
+  - class_id: 0
+    name: "Missing Teeth"
+    annotation_count: 2609
+    percentage: 26.53
+    description: "Congenitally missing or previously extracted permanent teeth visible in the panoramic radiograph."
+  - class_id: 1
+    name: "Dental Crown"
+    annotation_count: 1984
+    percentage: 20.17
+    description: "Prosthetic dental crowns (full-coverage restorations) placed on individual teeth."
+  - class_id: 2
+    name: "Root Canal"
+    annotation_count: 1956
+    percentage: 19.89
+    description: "Endodontically treated teeth exhibiting radiopaque root-canal filling material."
+  - class_id: 3
+    name: "Caries"
+    annotation_count: 1410
+    percentage: 14.34
+    description: "Carious lesions presenting as radiolucent areas in enamel and/or dentin."
+  - class_id: 4
+    name: "Broken Down Teeth"
+    annotation_count: 795
+    percentage: 8.08
+    description: "Teeth with extensive structural loss (large cavities, fractures, coronal destruction) not restorable with simple restorations."
+  - class_id: 5
+    name: "Wisdom Teeth"
+    annotation_count: 869
+    percentage: 8.84
+    description: "Third molars (wisdom teeth), regardless of eruption status."
+  - class_id: 6
+    name: "Healthy OPG"
+    annotation_count: 211
+    percentage: 2.15
+    description: "Image-level bounding box covering the visible dentition region in radiographs with no pathology present."
+
+annotation_schema:
+  primary_format: "COCO (instances_{train,val,test}.json)"
+  secondary_format: "YOLO (labels_yolo/{train,val,test}/*.txt)"
+  bbox_mode: "xywh  # x_min, y_min, width, height in pixel coordinates (COCO); normalized xc,yc,w,h (YOLO)"
+  segmentation: false
+  iscrowd: 0
+  class_ids_present: [0, 1, 2, 3, 4, 5, 6]
+  quality_control:
+    - "Manual annotation using LabelImg"
+    - "Initial annotation performed by an experienced dentist"
+    - "Independent verification by a second dentist"
+    - "Quality assurance and label refinement"
+    - "Removal of inaccurate or invalid bounding boxes"
+
+image_modality: "Orthopantomogram (OPG) — dental panoramic radiograph"
+image_file_format: "JPG (with a small number of JPEG variants)"
+image_rel_path_prefix: "images/{split}/{file_name}"
+
+label_yolo_format: "class_id x_center y_center width height — values normalized to [0,1] relative to true image W/H; per-split files in labels_yolo/{split}/"
+
+intended_applications:
+  - "Dental object detection"
+  - "Dental disease localization"
+  - "Computer-aided diagnosis (CAD)"
+  - "Deep learning research"
+  - "Medical image analysis"
+  - "YOLO model training"
+  - "Transfer learning"
+  - "Benchmark evaluation"
+  - "Educational purposes"
+
+ethics_statement: >
+  All radiographs were retrospectively collected. Ethical approval was
+  obtained where required by the participating institutions. All
+  patient-identifying information was removed before annotation. Images are
+  fully anonymized prior to public release. The dataset contains no personally
+  identifiable information (PII).
+
+citation_bibtex: |
+  @dataset{mopg7_2026,
+    author       = {Feroz, Faiza and Hasan, Md. Taufiq and Samapti, Eyevi Talukder and Hasan, Md. Tanvir and Partho, Shuvo Singh and Talukder, Zinia and Chowdhury, Afrina and Hasan, Md Zahid and Bijoy, Md Hasan Imam and Samad, Md Abdus},
+    title        = {{MOPG-7: A Multi-Clinic Dental Panoramic Radiograph Dataset with Expert YOLO Labels}},
+    year         = {2026},
+    publisher    = {},
+    version      = {v4.0},
+    doi          = {},
+    url          = {}
+  }
+
+related_resources: []
+usage_notes: ""

@@ -1,0 +1,8 @@
+class_id,class_name,annotation_count,description
+0,Missing Teeth,2609,Congenitally missing or previously extracted permanent teeth visible in the panoramic radiograph.
+1,Dental Crown,1984,Prosthetic dental crowns (full-coverage restorations) placed on individual teeth.
+2,Root Canal,1956,Endodontically treated teeth exhibiting radiopaque root-canal filling material.
+3,Caries,1410,Carious lesions presenting as radiolucent areas in enamel and/or dentin.
+4,Broken Down Teeth,795,"Teeth with extensive structural loss (large cavities, fractures, coronal destruction) not restorable with simple restorations."
+5,Wisdom Teeth,869,"Third molars (wisdom teeth), regardless of eruption status."
+6,Healthy OPG,211,"Panoramic radiographs showing normal dental structures without evident caries, missing teeth, root-canal treatment, crowns, fractures, or other significant dental abnormalities."
